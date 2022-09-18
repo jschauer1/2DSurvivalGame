@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class Bossmovement : MonoBehaviour
 {
-    public float moveSpeed;
     public Rigidbody2D rb;
-    public float lookRadiusx;
-    public float lookRadiusy;
-    public float magnitude;
-    public Vector3 randomx;
-    public Vector2 randommovement;
-    public Transform pCommander;
-    public float health;
-    public float SpawnPositionx;
-    public float SpawnPositiony;
-    public float OriginalSpawnx;
-    public float OriginalSpawny;
+    private Transform pCommander;
+
     // Start is called before the first frame update
     void Start()
     {

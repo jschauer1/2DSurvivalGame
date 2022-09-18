@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
-    public float speed;
-    public Vector2 Target;
+    private float speed;
+    private Vector2 Target;
     public Transform pBullet;
     public Transform Player;
     public Transform enemyDistance;
-    public float minimumDistance;
-    public GameObject enemy;
-    public GameObject closest;
-    public float bulletshot;
-    public List<Vector2> someListlistOfPosition;
-    public Transform listofenemy;
+    private GameObject enemy;
+    private Transform listofenemy;
 
     // Start is called before the first frame update
     void Start()

@@ -6,17 +6,9 @@ public class ShootBullet : MonoBehaviour
 {
     public float StartTimeBetweenShots;
     private float TimeBtwShots;
-    public GameObject pBullet;
-    public Transform bullet;
-    public GameObject[] pEnemy;
-    public Transform Enemy;
-    public int p;
-    public SpawnEnemy Script;
-    public int r;
-    public float listexceptiontimer;
-    public GameObject closestEnemy;
-    public Transform pCommander;
-    public Transform EnemyBoss;
+    public GameObject pBullet;//
+    public Transform bullet;//
+
 
     public bool howclose;
     // Start is called before the first frame update
@@ -24,8 +16,7 @@ public class ShootBullet : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(6, 7);
         TimeBtwShots = StartTimeBetweenShots;
-        pCommander = ObjectReference("Commander");
-        EnemyBoss = ObjectReference("FirstBoss");
+
     }
 
     private void FixedUpdate()
@@ -72,10 +63,10 @@ public class ShootBullet : MonoBehaviour
     {
         float radiusx;
         float radiusy;
-        closestEnemy = FindClosestEnemy("EnemyBug(Clone)");
-        Enemy = closestEnemy.transform;
-        radiusx = Mathf.Abs(pCommander.position.x - Enemy.position.x);
-        radiusy = Mathf.Abs(pCommander.position.y - Enemy.position.y);
+        Transform pCommander = ObjectReference("Commander");
+        Transform closestEnemy = FindClosestEnemy("EnemyBug(Clone)").transform;
+        radiusx = Mathf.Abs(pCommander.position.x - closestEnemy.position.x);
+        radiusy = Mathf.Abs(pCommander.position.y - closestEnemy.position.y);
         if (radiusx < x && radiusy < y)
         {
             return true;

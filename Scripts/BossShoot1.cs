@@ -7,12 +7,7 @@ public class BossShoot1 : MonoBehaviour
     public float StartTimeBetweenShots1;
     private float TimeBtwShots1;
     public GameObject pBulletBoss;
-    public GameObject EnemyBug;
-    public float radiusx1;
-    public float radiusy1;
-    public GameObject Enemy2;
-    public Transform Enemy1;
-    public Transform pCommander1;
+    private Transform pCommander1;
     // Start is called before the first frame update
     void Start()
     {

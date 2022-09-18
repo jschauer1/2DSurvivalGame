@@ -7,8 +7,7 @@ public class spawnbullet : MonoBehaviour
 	[SerializeField]
 	int numberOfProjectiles;
 
-	[SerializeField]
-	GameObject projectile;
+	public GameObject projectile;
 
 	Vector2 startPoint;
 

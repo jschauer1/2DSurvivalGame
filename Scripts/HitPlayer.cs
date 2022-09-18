@@ -5,10 +5,7 @@ using UnityEngine;
 public class HitPlayer : MonoBehaviour
 {
     public float totalHealth;
-    public Vector2 position;
-    public float timer;
-    public float StartTimer;
-    public float canTakeDamage;
+    private Vector2 position;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +13,6 @@ public class HitPlayer : MonoBehaviour
         position = new Vector2(0, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         totalHealth = totalHealth - .2f;

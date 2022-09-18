@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class Enemymovement : MonoBehaviour
 {
-    public float moveSpeed;
-    public float lookRadiusx;
-    public float direction;
-    public float lookRadiusy;
-    public float magnitude;
-    public Vector3 randomx;
-    public Vector2 randommovement;
+    private float moveSpeed;
+    private Vector3 randomx;
     private float moves;
     private Transform Commander;
     public float health;
-    public float SpawnPositionx;
-    public float SpawnPositiony;
-    public float OriginalSpawnx;
-    public float OriginalSpawny;
-    public Vector2 check;
-    public Vector2 checktime;
-    public float NotChangeTimeBtwCheck;
-    public float TimeBtwCheck;
+    private float SpawnPositionx;
+    private float SpawnPositiony;
+    private float OriginalSpawnx;
+    private float OriginalSpawny;
+    private Vector2 check;
+    private Vector2 checktime;
+    private float NotChangeTimeBtwCheck;
+    private float TimeBtwCheck;
     void Start()
     {
         onstart();
