@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bossmovement : MonoBehaviour
+public class Bossmovement : Toolbox
 {
     public Rigidbody2D rb;
     private Transform pCommander;
@@ -23,36 +23,12 @@ public class Bossmovement : MonoBehaviour
            
         }
     }
-    bool ifclose(float x, float y)
-    {
-        float radiusx;
-        float radiusy;
-        radiusx = Mathf.Abs(pCommander.position.x - transform.position.x);
-        radiusy = Mathf.Abs(pCommander.position.y - transform.position.y);
-        if (radiusx < x && radiusy < y)
-        {
-            return true;
-        }
-        return false;
-    }
+
     float direction()
     {
         Vector2 direction = pCommander.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         return angle;
     }
-    Transform ObjectReference(string Reference)
-    {
-        if (GameObject.Find(Reference) != null)
-        {
-            Transform Object = GameObject.Find(Reference).transform;
-            return Object;
-        }
-        return null;
-
-    }
-
-
-
 }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemymovement : MonoBehaviour
+public class Enemymovement : Toolbox
 {
     private float moveSpeed;
     private Vector3 randomx;
@@ -87,34 +87,6 @@ public class Enemymovement : MonoBehaviour
             TimeBtwCheck = NotChangeTimeBtwCheck;
         }
       TimeBtwCheck -= Time.deltaTime;
-    }
-    Vector2 random(float x1, float x2,float y1,float y2)
-    {
-        Vector2 randoms;
-        randoms = new Vector2(Random.Range(x1, x2), Random.Range(y1, y2));
-        return randoms;
-    }
-    Transform ObjectReference(string Reference)
-    {
-        if (GameObject.Find(Reference) != null)
-        {
-            Transform Object = GameObject.Find(Reference).transform;
-            return Object;
-        }
-        return null;
-
-    }
-    bool ifclose(float x, float y)
-    {
-        float radiusx;
-        float radiusy;
-        radiusx = Mathf.Abs(Commander.position.x - transform.position.x);
-        radiusy = Mathf.Abs(Commander.position.y - transform.position.y);
-        if (radiusx < x && radiusy < y)
-        {
-            return true;
-        }
-        return false;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

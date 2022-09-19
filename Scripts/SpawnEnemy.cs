@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour
+public class SpawnEnemy : Toolbox
 {
     public GameObject SpawnEnemyPrefab;
     public GameObject SpawnBoss1Prefab;
@@ -26,17 +26,4 @@ public class SpawnEnemy : MonoBehaviour
         }
 
      }
-    int count(string ObjectCounted)
-    {
-        GameObject[] counts;
-        counts = GameObject.FindGameObjectsWithTag(ObjectCounted);
-        return counts.Length;
-    }
-    Vector2 random(float x1, float x2, float y1, float y2)
-    {
-        Vector2 randoms;
-        randoms = new Vector2(Random.Range(x1, x2), Random.Range(y1, y2));
-        return randoms;
-    }
-
 }

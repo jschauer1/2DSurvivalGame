@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileMovement : MonoBehaviour
+public class ProjectileMovement : Toolbox
 {
     private float speed;
     private Vector2 Target;
@@ -24,7 +24,11 @@ public class ProjectileMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
+    {
+        shoot();
+    }
+    void shoot()
     {
         pBullet.position = Vector2.MoveTowards(pBullet.position, Target, speed * Time.deltaTime);
         if (transform.position.x == Target.x && transform.position.y == Target.y)
@@ -35,25 +39,6 @@ public class ProjectileMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Destroy(gameObject);
-    }
-    GameObject FindClosestEnemy(string CloseEnemy)
-    {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag(CloseEnemy);
-        GameObject closest = null;
-        float distance = Mathf.Infinity;
-        Vector3 position = transform.position;
-        foreach (GameObject go in gos)
-        {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
-                closest = go;
-                distance = curDistance;
-            }
-        }
-        return closest;
     }
 }
 

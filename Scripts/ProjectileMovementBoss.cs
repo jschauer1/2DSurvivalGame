@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileMovementBoss : MonoBehaviour
+public class ProjectileMovementBoss : Toolbox
 {
     public Transform pBullet1;//
     private float speed1;
@@ -14,18 +14,18 @@ public class ProjectileMovementBoss : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 8);
         Physics2D.IgnoreLayerCollision(7, 8);
         speed1 = 1f;
-        Transform enemy = GameObject.Find("Commander").transform;
+        Transform enemy = ObjectReference("Commander");
         Target1 = enemy.position;
         MoveSpeed = speed1 * Time.deltaTime;
 
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        onshoot();
+        shoot();
     }
-    void onshoot()
+    void shoot()
     {
         if (pBullet1.position.x == Target1.x && pBullet1.position.y == Target1.y)
         {

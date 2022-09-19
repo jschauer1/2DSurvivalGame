@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootBullet : MonoBehaviour
+public class ShootBullet : Toolbox
 {
-    public float StartTimeBetweenShots;
-    private float TimeBtwShots;
     public GameObject pBullet;//
     public Transform bullet;//
 
@@ -15,8 +13,7 @@ public class ShootBullet : MonoBehaviour
     void Start()
     {
         Physics2D.IgnoreLayerCollision(6, 7);
-        TimeBtwShots = StartTimeBetweenShots;
-
+        TimeBtwShots = 3;
     }
 
     private void FixedUpdate()
@@ -25,65 +22,16 @@ public class ShootBullet : MonoBehaviour
     }
     void shoot()
     {
-            if (ifclose(1f, 1f))
-            {
-                if (TimeBtwShots <= 0)
-                {
-                    Instantiate(pBullet, transform.position, Quaternion.identity);
-                    TimeBtwShots = StartTimeBetweenShots;
-                }
-                else
-                {
-                    TimeBtwShots -= Time.deltaTime;
-                }
-            
-
-        }
-    }
-    GameObject FindClosestEnemy(string CloseEnemy)
-    {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag(CloseEnemy);
-        GameObject closest = null;
-        float distance = Mathf.Infinity;
-        Vector3 position = transform.position;
-        foreach (GameObject go in gos)
+        if (ifclose(1,1))
         {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
+            if (time(1))
             {
-                closest = go;
-                distance = curDistance;
+                Instantiate(pBullet, transform.position, Quaternion.identity);
             }
         }
-        return closest;
-    }
-    bool ifclose(float x, float y)
-    {
-        float radiusx;
-        float radiusy;
-        Transform pCommander = ObjectReference("Commander");
-        Transform closestEnemy = FindClosestEnemy("EnemyBug(Clone)").transform;
-        radiusx = Mathf.Abs(pCommander.position.x - closestEnemy.position.x);
-        radiusy = Mathf.Abs(pCommander.position.y - closestEnemy.position.y);
-        if (radiusx < x && radiusy < y)
-        {
-            return true;
-        }
-        return false;
-    }
-    Transform ObjectReference(string Reference)
-    {
-        if (GameObject.Find(Reference) != null)
-        {
-            Transform Object = GameObject.Find(Reference).transform;
-            return Object;
-        }
-        return null;
- 
     }
 
 }
-        
+
+
 
