@@ -17,7 +17,7 @@ public class Bossmovement : Toolbox
     // Update is called once per frame
     void Update()
     {
-        if (ifclose(2, 2))
+        if (ifclose(2))
         {
             rb.rotation = direction() + 90;
            

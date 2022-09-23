@@ -27,6 +27,7 @@ public class ProjectileMovementBoss : Toolbox
     }
     void shoot()
     {
+        MoveSpeed = speed1 * Time.deltaTime;
         if (pBullet1.position.x == Target1.x && pBullet1.position.y == Target1.y)
         {
             Destroy(gameObject);

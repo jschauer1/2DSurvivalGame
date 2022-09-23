@@ -11,31 +11,23 @@ public class ProjectileMovement : Toolbox
     public Transform enemyDistance;
     private GameObject enemy;
     private Transform listofenemy;
+    float Startpointx;
+    float Startpointy;
 
+
+    // Update is called once per frame
     // Start is called before the first frame update
     void Start()
     {
-        enemy = FindClosestEnemy("EnemyBug(Clone)");
-        listofenemy = enemy.transform;
-        List<Vector2> listOfPosition = new List<Vector2>();
-        listOfPosition.Add(listofenemy.position);
-        speed = 1f;
-        Target = listOfPosition[0];
+        Startpoint = transform.position;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        shoot();
+        DestroyGameObByMag(2);
     }
-    void shoot()
-    {
-        pBullet.position = Vector2.MoveTowards(pBullet.position, Target, speed * Time.deltaTime);
-        if (transform.position.x == Target.x && transform.position.y == Target.y)
-        {
-            Destroy(gameObject);
-        }
-    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         Destroy(gameObject);

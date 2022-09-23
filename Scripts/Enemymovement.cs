@@ -50,7 +50,7 @@ public class Enemymovement : Toolbox
         {
             Destroy(gameObject);
         }
-        if (ifclose(1, 1))
+        if (ifclose(1))
         {
             transform.position = Vector2.MoveTowards(transform.position, Commander.position, moves);
 
@@ -77,7 +77,7 @@ public class Enemymovement : Toolbox
         }
         else if (TimeBtwCheck <= 0)
         {
-            if (ifclose(1, 1) == false)
+            if (ifclose(1) == false)
             {
                 if (Mathf.Round((check.x * 100)) == Mathf.Round(checktime.x * 100) && Mathf.Round((check.y * 100)) == Mathf.Round(checktime.y * 100))
                 {

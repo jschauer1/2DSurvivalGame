@@ -22,9 +22,9 @@ public class BossShoot1 : Toolbox
     }
     void shoot()
     {
-        if (ifclose(2f, 2f))
+        if (ifclose(2f))
         {
-            if (time(.2f))
+            if (time(1f))
             {
                 Instantiate(pBulletBoss, transform.position, Quaternion.identity);
             }

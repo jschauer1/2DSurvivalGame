@@ -13,7 +13,7 @@ public class ShootBullet : Toolbox
     void Start()
     {
         Physics2D.IgnoreLayerCollision(6, 7);
-        TimeBtwShots = 3;
+        TimeBtwShots = 1;
     }
 
     private void FixedUpdate()
@@ -22,11 +22,11 @@ public class ShootBullet : Toolbox
     }
     void shoot()
     {
-        if (ifclose(1,1))
+        if (ifclose(1))
         {
             if (time(1))
             {
-                Instantiate(pBullet, transform.position, Quaternion.identity);
+                onShoot(pBullet, "EnemyBug(Clone)", 3f);
             }
         }
     }
