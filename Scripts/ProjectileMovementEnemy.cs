@@ -10,6 +10,7 @@ public class ProjectileMovementEnemy : Toolbox
     {
         Physics2D.IgnoreLayerCollision(8, 8);
         Physics2D.IgnoreLayerCollision(7, 8);
+        Physics2D.IgnoreLayerCollision(13, 8);
         Startpoint = transform.position;
 
     }
@@ -17,7 +18,10 @@ public class ProjectileMovementEnemy : Toolbox
     // Update is called once per frame
     void FixedUpdate()
     {
-        DestroyGameObByMag(2);
+        if (DestroyBullet(3))
+        {
+            Destroy(gameObject);
+        }
     }
 
 

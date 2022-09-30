@@ -16,14 +16,14 @@ public class SpawnEnemy : Toolbox
         spawn(SpawnEnemyPrefab, 2, -6.03f, -1.6f, 5.88f, -5.69f);
         spawn(SpawnBoss1Prefab, 1, -.015f, 9.61f, -.015f, 9.61f);
     }
-    void spawn(GameObject Prefab,int howmany, float x1, float y1, float x2, float y2)
+   void spawn(GameObject Prefab, int howmany, float x1, float y1, float x2, float y2)
     {
         Vector2 SpawnPosition;
         for (int i = 0; i < howmany; i++)
-        { 
-            SpawnPosition = random(x1,x2,y1,y2);
+        {
+            SpawnPosition = random(x1, x2, y1, y2);
             Instantiate(Prefab, SpawnPosition, Quaternion.identity);
         }
 
-     }
+    }
 }

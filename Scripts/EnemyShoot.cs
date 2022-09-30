@@ -5,9 +5,8 @@ using UnityEngine;
 public class EnemyShoot : Toolbox
 {   
     [SerializeField]
-     GameObject pBullet1;//
-    Vector2 bug;
-    Vector2 startPoint;
+     GameObject pBullet1;
+    _Time timer = new _Time();
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +17,6 @@ public class EnemyShoot : Toolbox
 
     private void FixedUpdate()
     {
-        bug = transform.position;
         shoot(1, 1, 2f);
         shoot(.4f, .4f, 1f);
     }
@@ -27,9 +25,9 @@ public class EnemyShoot : Toolbox
         
         if (ifclose(x1))
         {
-            if (time(timex))
+           if (timer._wait(timex))
             {
-                onShoot(pBullet1, "Commander", 3f);
+                onShoot(pBullet1, "Commander", 2.5f);
             }
 
         }

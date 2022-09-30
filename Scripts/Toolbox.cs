@@ -7,7 +7,7 @@ public abstract class Toolbox : MonoBehaviour
     protected Vector2 Startpoint;
     protected float TimeBtwShots;
     //paste in and Control Shift / to uncomment.
-    protected Transform ObjectReference(string Reference)
+    protected Transform ObjectReference(string Reference)//Allows for easy Game Object Referencing, checking if null
     {
         if (GameObject.Find(Reference) != null)
         {
@@ -17,38 +17,29 @@ public abstract class Toolbox : MonoBehaviour
         return null;
 
     }
-    protected void onShoot(GameObject BulletType, string Reference, float speed)
+    protected void onShoot(GameObject BulletType, string Reference, float speed)//Shoots a bullet at enemy type
     {
-        Transform Target = FindClosestEnemy(Reference).transform;
-        Vector2 Enemy = new Vector2(Target.position.x - transform.position.x, Target.position.y - transform.position.y).normalized * speed;
-        var proj = Instantiate(BulletType, transform.position, Quaternion.identity);
-        Vector2 Projectile = new Vector2(proj.transform.position.x, proj.transform.position.y);
-        proj.GetComponent<Rigidbody2D>().velocity = new Vector2(Enemy.x, Enemy.y);
+            Transform Target = FindClosestEnemy(Reference).transform;
+            Vector2 Enemy = new Vector2(Target.position.x - transform.position.x, Target.position.y - transform.position.y).normalized * speed;
+            var proj = Instantiate(BulletType, transform.position, Quaternion.identity);
+            proj.GetComponent<Rigidbody2D>().velocity = new Vector2(Enemy.x, Enemy.y);
     }
-    protected GameObject GameObjectReference(string Reference)
-    {
-        if (GameObject.Find(Reference) != null)
-        {
-            GameObject Object = GameObject.Find(Reference);
-            return Object;
-        }
-        return null;
-    }
-    protected int count(string ObjectCounted)
+
+    protected int count(string ObjectCounted)//Counts how many gameobjects of a specific tag exist
     {
         GameObject[] counts;
         counts = GameObject.FindGameObjectsWithTag(ObjectCounted);
         return counts.Length;
     }
-    protected Vector2 random(float x1, float x2, float y1, float y2)
+    protected Vector2 random(float x1, float x2, float y1, float y2)//Makes randomizing within a range faster and more intuitive
     {
         Vector2 randoms;
         randoms = new Vector2(Random.Range(x1, x2), Random.Range(y1, y2));
         return randoms;
     }
-    protected bool ifclose(float distance)
+    protected bool ifclose(float distance)//Checks a radius between the two most common gameobjects
     {
-        Transform pCommander = ObjectReference("Commander");
+        Transform pCommander = FindClosestEnemy("Commander").transform;
         Transform closestEnemy = FindClosestEnemy("EnemyBug(Clone)").transform;
         float diffx = (pCommander.position.x - closestEnemy.position.x);
         float diffy = (pCommander.position.y - closestEnemy.position.y);
@@ -56,7 +47,7 @@ public abstract class Toolbox : MonoBehaviour
         if (magnitude < distance) return true;
         else return false;
     }
-    protected GameObject FindClosestEnemy(string CloseEnemy)
+    protected GameObject FindClosestEnemy(string CloseEnemy)//Identifies closest enemy
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag(CloseEnemy);
@@ -75,7 +66,7 @@ public abstract class Toolbox : MonoBehaviour
         }
         return closest;
     }
-    protected bool DestroyBullet(float x)
+    protected bool DestroyBullet(float x)//Allows for easy destruction of gameobject based on startposition.
     {
         float diffx = (transform.position.x - Startpoint.x);
         float diffy = (transform.position.y - Startpoint.y);
@@ -83,24 +74,6 @@ public abstract class Toolbox : MonoBehaviour
         if (magnitude > x) return true;
         return false;
     }
-    protected bool time(float starttime)
-    {
-        if (TimeBtwShots <= 0)
-        {
-            TimeBtwShots = starttime;
-            return true;
-        }
-        else
-        {
-            TimeBtwShots -= Time.deltaTime;
-        }
-        return false;
-    }//time function requires you to have a variable outside function
-    protected void DestroyGameObByMag(float x)
-    {
-        if (DestroyBullet(x))
-        {
-            Destroy(gameObject);
-        }
-    }
+    
+    //The time class script is a also used significantly. Definetly take a look at that to understand code better
 }

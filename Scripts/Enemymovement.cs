@@ -17,6 +17,7 @@ public class Enemymovement : Toolbox
     private Vector2 checktime;
     private float NotChangeTimeBtwCheck;
     private float TimeBtwCheck;
+    [SerializeField] Rigidbody2D rb;
     void Start()
     {
         onstart();
@@ -27,24 +28,24 @@ public class Enemymovement : Toolbox
     {
         test();
         move();
-        
+        rb.velocity = new Vector2(0f, 0f);
     }
 
     void onstart()
     {
         health = 1f;
-        moveSpeed = 1f;
+        moveSpeed = .8f;
         SpawnPositionx = transform.position.x + 1f;
         SpawnPositiony = transform.position.y + 1f;
         OriginalSpawnx = transform.position.x;
         OriginalSpawny = transform.position.y;
-        Commander = ObjectReference("Commander");
         randomx = random(SpawnPositionx, OriginalSpawnx, SpawnPositiony, OriginalSpawny);
         TimeBtwCheck = .5f;
         NotChangeTimeBtwCheck = TimeBtwCheck;
     }
     void move() 
     {
+        Commander = FindClosestEnemy("Commander").transform;
         moves = moveSpeed * Time.deltaTime;
         if (health <= 0.01f)
         {
@@ -66,6 +67,7 @@ public class Enemymovement : Toolbox
                 randomx = random(SpawnPositionx, OriginalSpawnx, SpawnPositiony, OriginalSpawny);
             }
         }
+
     }
     void test()
     {

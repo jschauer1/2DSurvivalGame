@@ -6,7 +6,7 @@ public class ShootBullet : Toolbox
 {
     public GameObject pBullet;//
     public Transform bullet;//
-
+    _Time timer = new _Time();
 
     public bool howclose;
     // Start is called before the first frame update
@@ -22,12 +22,9 @@ public class ShootBullet : Toolbox
     }
     void shoot()
     {
-        if (ifclose(1))
+        if (ifclose(1.5f))
         {
-            if (time(1))
-            {
                 onShoot(pBullet, "EnemyBug(Clone)", 3f);
-            }
         }
     }
 
